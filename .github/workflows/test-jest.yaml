@@ -1,0 +1,23 @@
+name: Testes unitários 
+
+on: pull_request
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Clonando o repositório
+              uses: actions/checkout@v4
+
+            - name: Instalando o node
+              uses: actions/setup-node@v2
+              with:
+                node-version: 22.x
+                cache: 'npm'
+                
+            - name: Rodando npm install e npm test
+              run: |
+                npm install
+                npm test
+                
